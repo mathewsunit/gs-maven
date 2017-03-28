@@ -1,26 +1,19 @@
-var ticTacToe = angular.module('ticTacToe', ['ngRoute','gameModule']);
+var jspAuction = angular.module('jspAuction', ['ngRoute','mainModule']);
 
-
-
-
-ticTacToe.config(['$routeProvider', function($routeProvider) {
+jspAuction.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/about', {
             templateUrl: 'templates/about.html'
         }).
-        when('/player/create', {
+        when('/user/create', {
             templateUrl: 'templates/create.html',
-            controller: 'PlayerCreateController'
+            controller: 'userCreateController'
         }).
-        when('/game/:id', {
-            templateUrl: 'templates/game-board.html',
-            controller: 'gameController'
-        }).
-        when('/player/panel', {
-            templateUrl: 'templates/player-panel.html',
-            controller: 'newGameController'
+        when('/user/panel', {
+            templateUrl: 'templates/user-panel.html',
+            controller: 'userHomeController'
         }).
         otherwise({
-            redirectTo: '/player/panel'
+            redirectTo: '/user/panel'
         });
 }]);

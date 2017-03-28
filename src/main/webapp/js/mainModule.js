@@ -1,6 +1,6 @@
-var gameModule = angular.module('gameModule', []);
+var mainModule = angular.module('mainModule', []);
 
-gameModule.controller('newGameController', ['$rootScope', '$scope', '$http', '$location',
+gameModule.controller('userHomeController', ['$rootScope', '$scope', '$http', '$location',
 
     function (rootScope, scope, http, location) {
 
@@ -38,4 +38,4 @@ gameModule.controller('newGameController', ['$rootScope', '$scope', '$http', '$l
         }
 
     }
-]); 
+]);
