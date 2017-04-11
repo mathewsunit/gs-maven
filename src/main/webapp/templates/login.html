@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <title>Spring Security Example </title>
-</head>
-<body>
-<div th:if="${param.error}">
-    Invalid username and password.
+<div class="alert alert-danger" ng-show="error">
+    There was a problem logging in. Please try again.
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+<form role="form" ng-submit="controller.login()">
+    <div class="form-group">
+        <label for="username">Username:</label> <input type="text"
+                                                       class="form-control" id="username" name="username" ng-model="controller.credentials.username"/>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label> <input type="password"
+                                                       class="form-control" id="password" name="password" ng-model="controller.credentials.password"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-</body>
-</html>
