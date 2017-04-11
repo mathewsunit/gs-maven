@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html ng-app="jspBay">
+
+<head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/application.css">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-postman/js/postman.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="js/application.js"></script>
+    <script src="js/mainModule.js"></script>
+
+
+    <style>
+        .Border {
+            max-width: 90%;
+            padding: 20px 20px 5px 30px;
+            margin: 40px auto;
+            background-color: #b3bde0;
+
+            border: 0px solid #1d3063;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -khtml-border-radius: 8px;
+        }
+
+        .Border .BorderTitle {
+            font-size: 1.125em;
+            font-weight: bold;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">JSPBay</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                	<li class="dropdown active">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pruthvi<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Home</a></li>
+			            <li><a href="#">Bids</a></li>
+			          </ul>
+			        </li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="#/services">Services</a></li>
+                    <li><a href="#/contact">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><strong><logged-user/></strong></a></li>
+                    <li><a href="/login?logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid" style="text-align:center;">
+    	<h1>Welcome</h1>
+    	<br/>
+    	<div class="input-group" style="width:250px;text-align:center;margin:auto;">
+		    <input type="text" class="form-control"/>
+		    <span class="input-group-addon">
+		        <i class="glyphicon glyphicon-search"></i>
+		    </span>
+		</div>
+		<br/>
+		<div class="col-md-6" id="my_items">
+			<h2 style="text-align:center;">My Items</h2>
+			<div class="col-md-6" id="sold">
+				<h3 style="text-align:center;">Sold</h3>
+				<table class="table-striped table_1" align="center">
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+					</tr>
+					<tr>
+						<td>Laptop</td>
+						<td>$500</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6" id="on_sale">
+				<h3 style="text-align:center;">On Sale</h3>
+				<table class="table-striped table_1" align="center">
+					<tr>
+						<th>Product</th>
+						<th>Bid</th>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td>$200</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-6" id="my_bids">
+			<h2 style="text-align:center;">My Bids</h2>
+			<div class="col-md-6" id="sold">
+				<h3 style="text-align:center;">Active</h3>
+				<table class="table-striped table_1" align="center">
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>State</th>
+					</tr>
+					<tr>
+						<td>Water</td>
+						<td>$200</td>
+						<td>Beaten</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6" id="on_sale">
+				<h3 style="text-align:center;">Closed</h3>
+				<table class="table-striped table_1" align="center">
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>State</th>
+					</tr>
+					<tr>
+						<td>Firestamp</td>
+						<td>$20</td>
+						<td>Beaten</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<div class="btn btn-primary">Post Item</div>
+    </div>
+
+    <footer class="text-center">
+        JSPBay
+    </footer>
+
+</body>
+
+</html>
