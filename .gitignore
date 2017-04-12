@@ -1,0 +1,4 @@
+.idea/workspace.xml
+src/main/resources/application.properties
+target/classes/application.properties
+target/classes/com/jspAuction/
