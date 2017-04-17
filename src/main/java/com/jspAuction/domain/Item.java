@@ -1,10 +1,6 @@
 package com.jspAuction.domain;
 
 import com.jspAuction.enums.ItemStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
@@ -15,11 +11,7 @@ import java.util.Date;
  */
 
 @Entity
-@Getter
-@Setter
 @Check(constraints = "item_status = 'REMOVED' or game_status = 'ONSALE' or game_status = 'SOLD'")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Item {
 
     @Id

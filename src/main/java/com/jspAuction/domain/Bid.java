@@ -1,10 +1,6 @@
 package com.jspAuction.domain;
 
 import com.jspAuction.enums.BidStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
@@ -14,12 +10,7 @@ import java.util.Date;
  * Created by sunit on 3/19/17.
  */
 
-@Entity
-@Getter
-@Setter
-@Check(constraints = "bid_status = 'ACCEPTED' or bid_status = 'REJECTED' or bid_status = 'LEADING'")
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity@Check(constraints = "bid_status = 'ACCEPTED' or bid_status = 'REJECTED' or bid_status = 'LEADING'")
 public class Bid {
 
     @Id

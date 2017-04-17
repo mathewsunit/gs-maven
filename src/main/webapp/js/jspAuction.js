@@ -1,11 +1,8 @@
 angular
-		.module('jspAuction', [ 'ngRoute', 'auth', 'home', 'message', 'navigation' ])
+		.module('jspAuction', [ 'ngRoute','ngCookies', 'secure-rest-angular', 'home', 'message', 'navigation' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
-
-					$locationProvider.html5Mode(true);
-
 					$routeProvider.when('/', {
 						templateUrl : 'js/home/home.html',
 						controller : 'home',
@@ -18,14 +15,14 @@ angular
 						templateUrl : 'js/navigation/login.html',
 						controller : 'navigation',
 						controllerAs : 'controller'
-					}).otherwise('/');
+					}).otherwise('/login');
 
 					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-				}).run(function(auth) {
+                }).run(function(Login) {
 
-			// Initialize auth module with the home page and login/logout path
-			// respectively
-			auth.init('/', '/login', '/logout');
+                    // Initialize auth module with the home page and login/logout path
+                    // respectively
+                    Login.init('/', '/login', '/logout');
 
-});
+  });

@@ -1,8 +1,5 @@
 package com.jspAuction.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -11,8 +8,6 @@ import java.util.Date;
  * Created by sunit on 3/19/17.
  */
 
-@Getter
-@Setter
 public class ItemDTO {
 
 

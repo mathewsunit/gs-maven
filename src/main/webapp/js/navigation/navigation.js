@@ -1,7 +1,7 @@
-angular.module('navigation', ['ngRoute', 'auth']).controller(
+angular.module('navigation', ['ngRoute', 'secure-rest-angular']).controller(
 		'navigation',
 
-		function($route, auth) {
+		function($route, Login) {
 
 			var self = this;
 
@@ -12,11 +12,11 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
 			};
 
 			self.authenticated = function() {
-				return auth.authenticated;
+				return Login.authenticated;
 			}
 
 			self.login = function() {
-				auth.authenticate(self.credentials, function(authenticated) {
+				Login.authenticate(self.credentials, function(authenticated) {
 					if (authenticated) {
 						console.log("Login succeeded")
 						self.error = false;
@@ -26,7 +26,5 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
 					}
 				})
 			};
-
-			self.logout = auth.clear;
-
+			self.logout = Login.clear;
 });

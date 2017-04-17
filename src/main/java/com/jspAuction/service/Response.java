@@ -1,13 +1,8 @@
 package com.jspAuction.service;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Created by sunit on 3/21/17.
  */
-@Getter
-@Setter
 public class Response<T> {
     private T object;
     private Status status;

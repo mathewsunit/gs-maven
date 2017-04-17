@@ -1,8 +1,5 @@
 package com.jspAuction.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.validation.constraints.NotNull;
 
 
@@ -10,8 +7,6 @@ import javax.validation.constraints.NotNull;
  * Created by sunit on 3/19/17.
  */
 
-@Getter
-@Setter
 public class UserDTO {
 
     @NotNull

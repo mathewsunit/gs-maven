@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gs-maven" />
+        <module name="jspAuction" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="gs-maven" target="1.8" />
+      <module name="jspAuction" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
