@@ -56,8 +56,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
-                .antMatchers("/login", "/*/**").permitAll()
-                .antMatchers("/logout", "/rest/**").authenticated();
+                .antMatchers("/login", "/", "/bower_components/**","/js/**","/css/**").permitAll()
+                .antMatchers("/logout", "/user/**", "/resource/**").authenticated();
 
         // Handlers and entry points
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
@@ -79,11 +79,13 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                         new NegatedRequestMatcher(new AntPathRequestMatcher("/login*/**", HttpMethod.OPTIONS.toString())),
                         new NegatedRequestMatcher(new AntPathRequestMatcher("/logout*/**", HttpMethod.OPTIONS.toString())),
 
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.GET.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.HEAD.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.OPTIONS.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/rest*/**", HttpMethod.TRACE.toString())),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/*/**"))
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/user", HttpMethod.GET.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/resource*/**", HttpMethod.GET.toString())),
+
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/", HttpMethod.GET.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/bower_components/**", HttpMethod.GET.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/css/**", HttpMethod.GET.toString())),
+                        new NegatedRequestMatcher(new AntPathRequestMatcher("/js/**", HttpMethod.GET.toString()))
                 )
         );
         http.addFilterAfter(new CsrfTokenResponseCookieBindingFilter(), CsrfFilter.class); // CSRF tokens handling

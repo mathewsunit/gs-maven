@@ -1,8 +1,34 @@
 angular
-		.module('jspAuction', [ 'ngRoute','ngCookies', 'secure-rest-angular', 'home', 'message', 'navigation' ])
-		.config(
+		.module('jspAuction', [ 'ngRoute','ngCookies','ngCookies','ngResource', 'secure-rest-angular', 'home', 'message', 'navigation' ])
+		.provider('myCSRF',[function(){
+           var headerName = 'X-CSRF-TOKEN';
+           var cookieName = 'CSRF-TOKEN';
+           var allowedMethods = ['GET','OPTIONS','POST'];
 
-				function($routeProvider, $httpProvider, $locationProvider) {
+           this.setHeaderName = function(n) {
+             headerName = n;
+           }
+           this.setCookieName = function(n) {
+             cookieName = n;
+           }
+           this.setAllowedMethods = function(n) {
+             allowedMethods = n;
+           }
+           this.$get = ['$cookies', function($cookies){
+             return {
+               'request': function(config) {
+                 if(allowedMethods.indexOf(config.method) === -1) {
+                   // do something on success
+                   config.headers[headerName] = $cookies[cookieName];
+                 }
+                 console.log('Obtained config', config.headers[headerName]);
+                 return config;
+               }
+             }
+           }];
+         }]).config(function($routeProvider, $httpProvider, $locationProvider) {
+					$locationProvider.html5Mode(true);
+
 					$routeProvider.when('/', {
 						templateUrl : 'js/home/home.html',
 						controller : 'home',
@@ -15,9 +41,17 @@ angular
 						templateUrl : 'js/navigation/login.html',
 						controller : 'navigation',
 						controllerAs : 'controller'
-					}).otherwise('/login');
+					}).otherwise('/');
 
-					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+                    $httpProvider.interceptors.push('myCSRF');
+                    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+//                    $httpProvider.defaults.withCredentials = true;
+
+//					  $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+//                    $httpProvider.defaults.withCredentials = true;
+                    // Tough luck: the default cookie-to-header mechanism is not working for cross-origin requests!
+//                    $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN'; // The name of the cookie sent by the server
+//                    $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN'; // The default header name picked up by Spring Security
 
                 }).run(function(Login) {
 
@@ -25,4 +59,4 @@ angular
                     // respectively
                     Login.init('/', '/login', '/logout');
 
-  });
+                });

@@ -6,7 +6,7 @@ angular.module('secure-rest-angular').factory('Cookies', function () {
 		 * @param cookieKey The key of the cookie value to fetch.
 		 * @returns {*} Either the cookie value or "null" if no value matching the specfied key could be found.
 		 */
-		getFromDocument: function (cookieKey) {
+            getFromDocument: function (cookieKey) {
 			if (!cookieKey) {
 				return null;
 			}

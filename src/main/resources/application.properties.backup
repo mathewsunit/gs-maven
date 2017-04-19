@@ -1,0 +1,24 @@
+logging:
+level:
+org:
+springframework: INFO
+springframework.security: INFO
+spring:
+datasource:
+driver-class-name: com.mysql.jdbc.Driver
+password: sonus1
+testWhileIdle: true
+url: jdbc:mysql://localhost:3306/JPABay
+username: root
+validationQuery: SELECT 1
+jackson:
+serialization:
+fail-on-empty-beans: false
+jpa:
+hibernate:
+ddl-auto: create-drop
+naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+properties:
+hibernate:
+dialect: org.hibernate.dialect.MySQL5Dialect
+show-sql: true
